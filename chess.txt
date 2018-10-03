@@ -1,0 +1,20 @@
+- game has two players
+- game has a board
+
+- does the board have pieces or the player has pieces?
+
+board has players? seems like a twisted abstraction, the players manipulate the board, the board doesn't manipulate the players.
+
+- board has pieces
+- board simplest form is a 8x8 grid
+
+- initalize the board with the pieces in the desired configuration
+
+- piece has a color (black or white)
+- piece has a type (pawn, queen, king, knight, etc)
+
+- piece has an id? e.g. knight1 and knight2
+- does piece know if it's alive or not? no, whether the piece is on or off the board determines whether it's alive. we may not even need to know if it's alive.
+
+ 
+
