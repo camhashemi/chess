@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_10" default="false" project-jdk-name="10" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="modificationStamps">
+      <map>
+        <entry key="$USER_HOME$/Documents/CS/Play/hello" value="1435127805000" />
+        <entry key="$USER_HOME$/Documents/CS/Play/intro" value="1452388608000" />
+        <entry key="$USER_HOME$/Documents/CS/Play/products" value="1440353599000" />
+        <entry key="$USER_HOME$/Documents/CS/Play/slick" value="1443306511000" />
+        <entry key="$USER_HOME$/Documents/Kifi/keepit/kifi-backend" value="2861514236000" />
+        <entry key="$USER_HOME$/di/di" value="1484877153000" />
+        <entry key="$USER_HOME$/pet/starter" value="1486260968000" />
+        <entry key="$USER_HOME$/play/di" value="1484861695000" />
+        <entry key="$USER_HOME$/play2/di" value="1484861695000" />
+        <entry key="$USER_HOME$/scene/backend/scene" value="1494817810000" />
+      </map>
+    </option>
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
   </component>
 </project>
