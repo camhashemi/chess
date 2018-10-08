@@ -14,6 +14,7 @@ enum class Color {
   Black
 }
 
+typealias Position = Pair<Int, Int>
 typealias Grid = Array<Array<Piece?>>
 class Board {
 
@@ -29,6 +30,19 @@ class Board {
       createPawnRow(Color.Black),
       createBaseRow(Color.Black))
 
+  fun move(startPos: Position, endPos: Position ) {
+    val removedOpt = remove(startPos)
+    if (removedOpt != null) add(removedOpt, endPos)
+  }
+  private fun remove(pos: Position): Piece? {
+    val removedPiece = grid[pos.first][pos.second]
+    grid[pos.first][pos.second] = null
+    return removedPiece
+  }
+  private fun add(piece: Piece, pos: Position) {
+    grid[pos.first][pos.second] = piece
+  }
+
   private fun createEmptyRow(): Array<Piece?> = arrayOfNulls(8)
   private fun createBaseRow(color: Color): Array<Piece?> =
       arrayOf(Rook(color), Knight(color), Bishop(color), Queen(color), King(color), Bishop(color), Knight(color), Rook(color))
@@ -42,10 +56,20 @@ class Board {
   }
 
   override fun toString(): String =
-      grid.map { it.joinToString() }
+      grid.reversedArray()
+          .map { it.joinToString() }
           .reduce { rows, row -> "$rows\n$row" }
 }
 
+
+// todo: stdout pretty print
+// todo: JS UI
+// todo: JSON
 fun main(args: Array<String>) {
-  println(Board())
+  val board = Board()
+  println(board)
+
+  board.move(Position(1, 1), Position(2, 2))
+  println()
+  println(board)
 }
