@@ -1,12 +1,13 @@
-import java.util.*
-
-abstract class Piece
-data class King (val color: Color) : Piece()
-data class Queen (val color : Color) : Piece()
-data class Knight (val color : Color): Piece()
-data class Rook (val color : Color): Piece()
-data class Bishop (val color : Color): Piece()
-data class Pawn (val color: Color): Piece()
+sealed class Piece {
+  abstract val color: Color
+  override fun toString() = "$color ${javaClass.canonicalName}"
+}
+class King (override val color: Color) : Piece()
+class Queen (override val color : Color) : Piece()
+class Knight (override val color : Color): Piece()
+class Rook (override val color : Color): Piece()
+class Bishop (override val color : Color): Piece()
+class Pawn (override val color: Color): Piece()
 
 enum class Color {
   White,
@@ -40,7 +41,9 @@ class Board {
     return row
   }
 
-  override fun toString(): String = Arrays.toString(grid)
+  override fun toString(): String =
+      grid.map { it.joinToString() }
+          .reduce { rows, row -> "$rows\n$row" }
 }
 
 fun main(args: Array<String>) {
