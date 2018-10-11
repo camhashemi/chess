@@ -1,20 +1,18 @@
 sealed class Piece(val color: Color) {
   override fun toString() = "$color${javaClass.canonicalName[0]}"
 }
-class King (color: Color) : Piece(color)
-class Queen (color : Color) : Piece(color)
-class Knight (color : Color): Piece(color)
-class Rook (color : Color): Piece(color)
-class Bishop (color : Color): Piece(color)
-class Pawn (color: Color): Piece(color)
+class King(color: Color) : Piece(color)
+class Queen(color: Color) : Piece(color)
+class Knight(color: Color): Piece(color)
+class Rook(color: Color): Piece(color)
+class Bishop(color: Color): Piece(color)
+class Pawn(color: Color): Piece(color)
 
 enum class Color {
   White,
   Black;
 
-  override fun toString() : String {
-    if (this == White) return "W" else return "B"
-  }
+  override fun toString() : String = if (this == White) "W" else "B"
 }
 
 typealias Position = Pair<Int, Int>
@@ -49,7 +47,6 @@ class Board {
   private fun createEmptyRow(): Array<Piece?> = arrayOfNulls(8)
   private fun createBaseRow(color: Color): Array<Piece?> =
       arrayOf(Rook(color), Knight(color), Bishop(color), Queen(color), King(color), Bishop(color), Knight(color), Rook(color))
-
   private fun createPawnRow(color: Color): Array<Piece?> {
     val row = arrayOfNulls<Piece?>(8)
     for (i in 0..7) {
@@ -60,7 +57,10 @@ class Board {
 
   override fun toString(): String =
       grid.reversedArray()
-          .map { it.joinToString(prefix = "[", separator = "][",postfix = "]").replace("null", "  ",false)}
+          .map {
+            it.joinToString(prefix = "[", separator = "][", postfix = "]")
+                .replace("null", "  ")
+          }
           .reduce { rows, row -> "$rows\n$row" } + "\n"
 }
 
@@ -73,5 +73,4 @@ fun main(args: Array<String>) {
   board.move(Position(0,0),Position(3,3))
 
   print(board)
-
 }
