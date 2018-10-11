@@ -1,13 +1,10 @@
-sealed class Piece {
-  abstract val color: Color
-  override fun toString() = "$color ${javaClass.canonicalName}"
-}
-class King (override val color: Color) : Piece()
-class Queen (override val color : Color) : Piece()
-class Knight (override val color : Color): Piece()
-class Rook (override val color : Color): Piece()
-class Bishop (override val color : Color): Piece()
-class Pawn (override val color: Color): Piece()
+sealed class Piece(val color: Color)
+class King (color: Color) : Piece(color)
+class Queen (color : Color) : Piece(color)
+class Knight (color : Color): Piece(color)
+class Rook (color : Color): Piece(color)
+class Bishop (color : Color): Piece(color)
+class Pawn (color: Color): Piece(color)
 
 enum class Color {
   White,
