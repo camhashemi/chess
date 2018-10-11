@@ -1,4 +1,6 @@
-sealed class Piece(val color: Color)
+sealed class Piece(val color: Color) {
+  override fun toString() = "$color${javaClass.canonicalName[0]}"
+}
 class King (color: Color) : Piece(color)
 class Queen (color : Color) : Piece(color)
 class Knight (color : Color): Piece(color)
@@ -8,7 +10,11 @@ class Pawn (color: Color): Piece(color)
 
 enum class Color {
   White,
-  Black
+  Black;
+
+  override fun toString() : String {
+    if (this == White) return "W" else return "B"
+  }
 }
 
 typealias Position = Pair<Int, Int>
@@ -54,19 +60,18 @@ class Board {
 
   override fun toString(): String =
       grid.reversedArray()
-          .map { it.joinToString() }
-          .reduce { rows, row -> "$rows\n$row" }
+          .map { it.joinToString(prefix = "[", separator = "][",postfix = "]").replace("null", "  ",false)}
+          .reduce { rows, row -> "$rows\n$row" } + "\n"
 }
-
 
 // todo: stdout pretty print
 // todo: JS UI
 // todo: JSON
 fun main(args: Array<String>) {
   val board = Board()
-  println(board)
+  print(board)
+  board.move(Position(0,0),Position(3,3))
 
-  board.move(Position(1, 1), Position(2, 2))
-  println()
-  println(board)
+  print(board)
+
 }

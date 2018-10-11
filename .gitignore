@@ -1,4 +1,4 @@
 .idea/
 out/
-chess.iml
 lib/
+*.iml
