@@ -1,5 +1,5 @@
 sealed class Piece(val color: Color) {
-  override fun toString() = "$color${javaClass.canonicalName[0]}"
+  override fun toString() = "${color.shortString()}${javaClass.canonicalName[0]}"
 }
 class King(color: Color) : Piece(color)
 class Queen(color: Color) : Piece(color)
@@ -12,10 +12,11 @@ enum class Color {
   White,
   Black;
 
-  override fun toString() : String = if (this == White) "W" else "B"
+  fun shortString() : String = if (this == White) "W" else "B"
 }
 
 typealias Position = Pair<Int, Int>
+typealias Move = Pair<Position, Position> //Todo change move.first & move.second | create class
 typealias Grid = Array<Array<Piece?>>
 class Board {
 
@@ -31,9 +32,9 @@ class Board {
       createPawnRow(Color.Black),
       createBaseRow(Color.Black))
 
-  fun move(startPos: Position, endPos: Position ) {
-    val removedOpt = remove(startPos)
-    if (removedOpt != null) add(removedOpt, endPos)
+  fun move(move: Move) {
+    val removedOpt = remove(move.first)
+    if (removedOpt != null) add(removedOpt, move.second)
   }
   private fun remove(pos: Position): Piece? {
     val removedPiece = grid[pos.first][pos.second]
@@ -63,14 +64,5 @@ class Board {
           }
           .reduce { rows, row -> "$rows\n$row" } + "\n"
 }
-
-// todo: stdout pretty print
 // todo: JS UI
 // todo: JSON
-fun main(args: Array<String>) {
-  val board = Board()
-  print(board)
-  board.move(Position(0,0),Position(3,3))
-
-  print(board)
-}
