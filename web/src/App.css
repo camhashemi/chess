@@ -12,9 +12,11 @@
 }
 
 .square {
-  display: inline-block;
+  display: inline-flex;
   width: var(--square-size);
   height: var(--square-size);
+  align-items: center;
+  justify-content: center;
   border: 1px solid black;
 }
 
