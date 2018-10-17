@@ -1,0 +1,24 @@
+:root {
+  --square-size: 50px;
+}
+
+.App {
+  text-align: center;
+}
+
+.board {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.square {
+  display: inline-block;
+  width: var(--square-size);
+  height: var(--square-size);
+  border: 1px solid black;
+}
+
+.row:nth-child(odd) > .square:nth-child(even),
+.row:nth-child(even) > .square:nth-child(odd) {
+  background: grey;
+}
